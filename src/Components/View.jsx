@@ -29,6 +29,7 @@ function View() {
             <th scope="col">Number</th>
             <th scope="col">Address</th>
             <th scope="col">Pincode</th>
+            <th scope="col">course</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@ function View() {
                 <td>{details.number}</td>
                 <td>{details.address}</td>
                 <td>{details.pincode}</td>
+                <td>{details.course}</td>
               </tr>
             })
           }
