@@ -68,7 +68,7 @@ function Create() {
         },
         onSubmit: async (values) => {
             let students = await axios.post("https://62ab049e371180affbdf40f1.mockapi.io/student", values);
-            alert("Details Created...");
+            alert("Details Created Sucessfully...");
             navigate('/view')
 
         }
