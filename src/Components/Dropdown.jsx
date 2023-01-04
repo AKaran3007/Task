@@ -1,52 +1,32 @@
-import { useState } from 'react';
-import './Style.css'
-import { Navigate, useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
-import { useFormik } from 'formik';
+const options = ['Male', 'Female'];
 
-function Dropdown({ selected, setSelected }) {
-    const navigate = useNavigate();
-    const formik = useFormik({
-        initialValues: {
-            gender: "",
-        },
-        onSubmit: async (values) => {
-            let students = await axios.post("https://62ab049e371180affbdf40f1.mockapi.io/student", values);
-            alert("Details Created...");
-            navigate('/view')
-            
-        }
-    })
-    const [isActive, setIsActive] = useState(false);
-    const options = ["Male", "Female", "Others"];
-    return (
-        <div className="dropdown"  name="gender" onChange={formik.handleChange} value={formik.values.gender} >
-            <div className="dropdown-btn" onClick={(e) =>
-                setIsActive(!isActive)}>{selected}
+export default function Dropdown() {
+    const [value, setValue] = React.useState(options[0]);
+    const [inputValue, setInputValue] = React.useState('');
 
-
-                <span className='.fas fa-caret-down'></span>
-            </div>
-            {isActive && (
-                <div className="dropdown-content">
-                    {options.map(option => (
-                        <div onClick={e => {
-                            setSelected(option)
-                            setIsActive(false)
-                        }
-
-
-                        } className="dropdown-item">
-                            {option}
-                        </div>
-                    ))}
-
-
-                </div>
-            )
-            }
-        </div >
-    );
+  return (
+    <div>
+      <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
+      <div>{`inputValue: '${inputValue}'`}</div>
+      <br />
+      <Autocomplete
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        inputValue={inputValue}
+        onInputChange={(event, newInputValue) => {
+          setInputValue(newInputValue);
+        }}
+        id="controllable-states-demo"
+        options={options}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Controllable" />}
+      />
+    </div>
+  );
 }
-export default Dropdown;

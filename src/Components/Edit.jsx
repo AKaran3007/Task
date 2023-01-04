@@ -126,6 +126,7 @@ function Edit() {
                             />
                             <span style={{ color: "red" }}>{formik.errors.gender}</span>
                             {/* <Dropdown selected={selected} setSelected={setSelected}  ></Dropdown> */}
+                           
                         </div>
 
 

@@ -2,15 +2,14 @@
 import { useFormik } from 'formik';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import Dropdown from "./Dropdown";
 import './Style.css'
 import { useState, React } from 'react';
 
 
-
-
-
 function Create() {
+    
+
+
     const [course, setCourse] = useState('');
 
     const handleChange = (e) => {
@@ -110,7 +109,10 @@ function Create() {
 
                             />
                             <span style={{ color: "red" }}>{formik.errors.gender}</span>
-                            {/* <Dropdown selected={selected} setSelected={setSelected}  ></Dropdown> */}
+
+
+
+                            
                         </div>
 
 
