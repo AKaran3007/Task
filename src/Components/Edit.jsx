@@ -1,24 +1,12 @@
-
-import { useFormik } from 'formik';
-import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import Dropdown from "./Dropdown";
-import './Style.css'
-import { useState, React } from 'react';
+import { useFormik } from 'formik';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
-
-
-
-
-function Create() {
-    const [course, setCourse] = useState('');
-
-    const handleChange = (e) => {
-        setCourse(e.target.value);
-    }
-
-    const [selected, setSelected] = useState("")
-    const navigate = useNavigate();
+function Edit() {
+    const [details, setDetails] = useState([]);
+    const params = useParams()
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -27,8 +15,8 @@ function Create() {
             number: "",
             address: "",
             pincode: "",
-            course:"",
-            location:[],
+            course: "",
+            location: [],
 
         },
         validate: (values) => {
@@ -60,24 +48,51 @@ function Create() {
             }
             if (values.location === "") {
                 errors.location = "Please enter location "
-                
+
             }
-            
+
 
             return errors;
         },
         onSubmit: async (values) => {
-            let students = await axios.post("https://62ab049e371180affbdf40f1.mockapi.io/student", values);
-            alert("Details Created...");
+            await axios.put(`https://62ab049e371180affbdf40f1.mockapi.io/student/${params.id}`, values);
+            alert("Details Edited...");
             navigate('/view')
 
         }
-    })
+    });
+
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    let loadUser = async () => {
+        try {
+            let details = await axios.get(`https://62ab049e371180affbdf40f1.mockapi.io/student/${params.id}`)
+            formik.setValues(
+                {
+                    name: details.data.name,
+                    gender: details.data.gender,
+                    age: details.data.age,
+                    number: details.data.number,
+                    address: details.data.address,
+                    pincode: details.data.pincode,
+                    course: details.data.course,
+                    location: details.data.location
+                }
+            )
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <>
             <div className='container'>
                 <div className="d-sm-flex align-items-center justify-content-center mb-4">
-                    <h1 className="h3 mb-0 text-dark-800">Create Details Form</h1>
+                    <h1 className="h3 mb-0 text-dark-800">Edit Form</h1>
 
                 </div>
                 <Link to="/view" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">View Details</Link>
@@ -102,7 +117,7 @@ function Create() {
 
                             <input
                                 className={`form-control ${formik.errors.gender ? `input-error` : ``}`}
-                                type={'text'} 
+                                type={'text'}
                                 value={formik.values.gender}
                                 onChange={formik.handleChange}
                                 name="gender"
@@ -169,37 +184,37 @@ function Create() {
                         </div>
 
                         <div className='col-lg-6' >
-                         <label  className={`form-check ${formik.errors.location ? `input-error` : ``}`}>Course <span style={{ color: "red" }}>*</span></label> <br></br>
-                            <input type="radio" value="react" id="course" 
-                               required="true" onChange={formik.handleChange} name="course" />
+                            <label className={`form-check ${formik.errors.location ? `input-error` : ``}`}>Course <span style={{ color: "red" }}>*</span></label> <br></br>
+                            <input type="radio" value="react" id="course"
+                                onChange={formik.handleChange} name="course" />
                             <label for="react">React</label>  &nbsp;
 
-                            <input type="radio"  value="angular" id="course" 
-                               required="true" onChange={formik.handleChange} name="course" />
+                            <input type="radio" value="angular" id="course"
+                                onChange={formik.handleChange} name="course" />
                             <label for="angular">Angular</label>  &nbsp;
 
-                            <input type="radio"  value="node" id="course" 
-                               required="true" onChange={formik.handleChange} name="course" />
+                            <input type="radio" value="node" id="course"
+                                onChange={formik.handleChange} name="course" />
                             <label for="node">Node</label>   &nbsp;
                         </div>
 
-                        <div className='col-lg-6' required="true">
-                        <label for="location"  className={`form-check ${formik.errors.location ? `input-error` : ``}`}> Select Location <span class="span" ></span></label> <br/>
-                        <input type="checkbox"  name="location" onChange={formik.handleChange} value="chennai" id="location" />Chennai  &nbsp;
-                        <input type="checkbox" name="location" onChange={formik.handleChange} value="banglore" id="location" />Banglore  &nbsp;
-                        <input type="checkbox" name="location" onChange={formik.handleChange} value="hosur" id="location" />Hosur  &nbsp;
-                        <input type="checkbox" name="location" onChange={formik.handleChange} value="madurai" id="location" />Madurai  &nbsp;
-                        <input type="checkbox" name="location" onChange={formik.handleChange} value="coimbatore" id="location" />Coimbatore  &nbsp;
+                        <div className='col-lg-6' >
+                            <label for="location" className={`form-check ${formik.errors.location ? `input-error` : ``}`}> Select Location <span class="span" ></span></label> <br />
+                            <input type="checkbox" name="location" onChange={formik.handleChange} value="chennai" id="location" />Chennai  &nbsp;
+                            <input type="checkbox" name="location" onChange={formik.handleChange} value="banglore" id="location" />Banglore  &nbsp;
+                            <input type="checkbox" name="location" onChange={formik.handleChange} value="hosur" id="location" />Hosur  &nbsp;
+                            <input type="checkbox" name="location" onChange={formik.handleChange} value="madurai" id="location" />Madurai  &nbsp;
+                            <input type="checkbox" name="location" onChange={formik.handleChange} value="coimbatore" id="location" />Coimbatore  &nbsp;
                         </div>
 
-                        
+
 
                         <div className='col-lg-12 mt-2'>
 
                             <input
                                 className='btn-primary'
                                 type={'submit'}
-                                value='Submit'
+                                value='Edit'
                                 disabled={!formik.isValid}
                             />
 
@@ -212,5 +227,6 @@ function Create() {
             </div>
         </>
     )
+
 }
-export default Create;
+export default Edit;
