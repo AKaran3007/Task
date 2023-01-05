@@ -105,9 +105,9 @@ function Create() {
                         <div className='col-lg-6'>
 
                             <label><b>Gender</b> <span style={{ color: "red" }}>*</span></label>
-                            <div class="input-group col-lg-12">
+                            <div class="input-group ">
                                 {/* <label class="input-group-text" for="gender">Options</label> */}
-                                <select onChange={formik.handleChange} class="form-check" id="gender">form-select
+                                <select onChange={formik.handleChange} class="form-check digi-gender " id="gender">form-select
                                     <option selected>Select Gender</option>
                                     <option value="male" id="gender" name="gender" onChange={formik.handleChange}>Male</option>
                                     <option value="female" id="gender" name="gender" onChange={formik.handleChange}>Female</option>
