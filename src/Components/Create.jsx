@@ -88,7 +88,7 @@ function Create() {
                 <Link to="/view" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">View Details</Link>
                 <form onSubmit={formik.handleSubmit}>
                     <div className='row'>
-                        <div className='col-lg-6'>
+                        <div className='col-lg-12'>
                             <label> <b>Name</b><span style={{ color: "red" }}>*</span></label>
                             <input
                                 className={`form-control ${formik.errors.name ? `input-error` : ``}`}
@@ -102,13 +102,13 @@ function Create() {
 
                         </div>
 
-                        <div className='col-lg-6'>
+                        <div className='col-lg-12'>
 
                             <label><b>Gender</b> <span style={{ color: "red" }}>*</span></label>
                             <div class="input-group ">
                                 {/* <label class="input-group-text" for="gender">Options</label> */}
-                                <select onChange={formik.handleChange} class="form-check digi-gender " id="gender">form-select
-                                    <option selected>Select Gender</option>
+                                <select  onChange={formik.handleChange} class="form-check digi-gender " id="gender">
+                                    <option disabled selected className='gend'>Select Gender</option>
                                     <option value="male" id="gender" name="gender" onChange={formik.handleChange}>Male</option>
                                     <option value="female" id="gender" name="gender" onChange={formik.handleChange}>Female</option>
                                     <option value="others" id="gender" name="gender" onChange={formik.handleChange}>Others</option>
@@ -118,7 +118,7 @@ function Create() {
                         </div>
 
 
-                        <div className='col-lg-6'>
+                        <div className='col-lg-12'>
                             <label><b>Age</b> <span style={{ color: "red" }}>*</span></label>
                             <input
                                 className={`form-control ${formik.errors.age ? `input-error` : ``}`}
@@ -132,7 +132,7 @@ function Create() {
 
                         </div>
 
-                        <div className='col-lg-6'>
+                        <div className='col-lg-12'>
                             <label> <b>Number</b> <span style={{ color: "red" }}>*</span></label>
                             <input
                                 className={`form-control ${formik.errors.number ? `input-error` : ``}`}
@@ -145,7 +145,7 @@ function Create() {
                             <span style={{ color: "red" }}>{formik.errors.number}</span>
                         </div>
 
-                        <div className='col-lg-6'>
+                        <div className='col-lg-12'>
                             <label> <b>Address </b> <span style={{ color: "red" }}>*</span></label>
                             <input
                                 className={`form-control ${formik.errors.address ? `input-error` : ``}`}
@@ -158,7 +158,7 @@ function Create() {
                             <span style={{ color: "red" }}>{formik.errors.address}</span>
                         </div>
 
-                        <div className='col-lg-6'>
+                        <div className='col-lg-12'>
                             <label> <b>Pincode</b> <span style={{ color: "red" }}>*</span></label>
                             <input
                                 className={`form-control ${formik.errors.pincode ? `input-error` : ``}`}
@@ -171,20 +171,20 @@ function Create() {
                             <span style={{ color: "red" }}>{formik.errors.pincode}</span>
                         </div>
 
-                        <div className='col-lg-6' >
+                        <div className='col-lg-12' >
 
-                            <label className={`form-check ${formik.errors.course ? `input-error` : ``}`}> <b>Course</b> <span style={{ color: "red" }}>*</span></label> <br></br>
+                            <label className={`form-check ${formik.errors.course ? `input-error` : ``}`}> <b>Course</b> <span style={{ color: "red" }}>*</span></label> 
                             <input type="radio" value="react" id="course"
                                 onChange={formik.handleChange} name="course" />
-                            <label for="react"> <b>React</b></label>  &nbsp;
+                            <label for="react"> React</label>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
                             <input type="radio" value="angular" id="course"
                                 onChange={formik.handleChange} name="course" />
-                            <label for="angular"> <b>Angular</b></label>  &nbsp;
+                            <label for="angular"> Angular</label>    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
                             <input type="radio" value="node" id="course"
                                 onChange={formik.handleChange} name="course" />
-                            <label for="node"> <b>Node</b></label>   &nbsp; <br />
+                            <label for="node"> Node</label>   &nbsp; <br />
 
                             <span style={{ color: "red" }}>{formik.errors.course}</span>
 
@@ -200,20 +200,20 @@ function Create() {
                         <input type="checkbox" name="location" onChange={formik.handleChange} value="coimbatore" id="location" />Coimbatore  &nbsp;
                         </div> */}
 
-                        <div className='col-lg-6' >
+                        <div className='col-lg-12' > <br/>
 
-                            <label className={`form-check ${formik.errors.location ? `input-error` : ``}`}> <b>Location</b> <span style={{ color: "red" }}>*</span></label> <br></br>
+                            <label className={`form-check ${formik.errors.location ? `input-error` : ``}`}> <b>Location</b> <span style={{ color: "red" }}>*</span></label> 
                             <input type="checkbox" value="Chennai" id="location"
                                 onChange={formik.handleChange} name="location" />
-                            <label for="Chennai"> <b>Chennai</b></label>  &nbsp;
+                            <label for="Chennai"> Chennai</label>  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
 
                             <input type="checkbox" value="Banglore" id="location"
                                 onChange={formik.handleChange} name="location" />
-                            <label for="Banglore"> <b>Banglore</b></label>  &nbsp;
+                            <label for="Banglore"> Banglore</label>      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
                             <input type="checkbox" value="Hyderabad" id="location"
                                 onChange={formik.handleChange} name="location" />
-                            <label for="Hyderabad"> <b>Hyderabad</b></label>   &nbsp; <br />
+                            <label for="Hyderabad"> Hyderabad</label>   &nbsp; <br />
 
                             <span style={{ color: "red" }}>{formik.errors.location}</span>
 
