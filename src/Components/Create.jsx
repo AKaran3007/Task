@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './Style.css'
 import { useState, React } from 'react';
-import Dropdown from './Dropdown';
+
 
 
 
@@ -13,11 +13,14 @@ function Create() {
 
     const handleChange = (e) => {
         setCourse(e.target.value);
+
     }
+
+
 
     const [selected, setSelected] = useState("")
     const navigate = useNavigate();
-    
+
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -100,17 +103,17 @@ function Create() {
                         </div>
 
                         <div className='col-lg-6'>
+
                             <label><b>Gender</b> <span style={{ color: "red" }}>*</span></label>
-
-                            <input
-                                className={`form-control ${formik.errors.gender ? `input-error` : ``}`}
-                                type={'text'}
-                                value={formik.values.gender}
-                                onChange={formik.handleChange}
-                                name="gender"
-                                placeholder="Male/Female/Others"
-
-                            />
+                            <div class="input-group col-lg-12">
+                                {/* <label class="input-group-text" for="gender">Options</label> */}
+                                <select onChange={formik.handleChange} class="form-check" id="gender">form-select
+                                    <option selected>Select Gender</option>
+                                    <option value="male" id="gender" name="gender" onChange={formik.handleChange}>Male</option>
+                                    <option value="female" id="gender" name="gender" onChange={formik.handleChange}>Female</option>
+                                    <option value="others" id="gender" name="gender" onChange={formik.handleChange}>Others</option>
+                                </select>
+                            </div>
                             <span style={{ color: "red" }}>{formik.errors.gender}</span>
                         </div>
 
@@ -172,15 +175,15 @@ function Create() {
 
                             <label className={`form-check ${formik.errors.course ? `input-error` : ``}`}> <b>Course</b> <span style={{ color: "red" }}>*</span></label> <br></br>
                             <input type="radio" value="react" id="course"
-                                required='true' onChange={formik.handleChange} name="course" />
+                                onChange={formik.handleChange} name="course" />
                             <label for="react"> <b>React</b></label>  &nbsp;
 
                             <input type="radio" value="angular" id="course"
-                                required='true' onChange={formik.handleChange} name="course" />
+                                onChange={formik.handleChange} name="course" />
                             <label for="angular"> <b>Angular</b></label>  &nbsp;
 
                             <input type="radio" value="node" id="course"
-                                required='true' onChange={formik.handleChange} name="course" />
+                                onChange={formik.handleChange} name="course" />
                             <label for="node"> <b>Node</b></label>   &nbsp; <br />
 
                             <span style={{ color: "red" }}>{formik.errors.course}</span>

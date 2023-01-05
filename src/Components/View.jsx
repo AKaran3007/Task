@@ -31,7 +31,7 @@ function View() {
       <h1 className="h3 mb-0 text-gray-800">Details</h1>
       <Link to="/" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Details</Link>
 
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">S.no</th>
