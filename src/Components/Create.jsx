@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './Style.css'
 import { useState, React } from 'react';
+import TextField from '@mui/material/TextField';
 
 
 
@@ -48,10 +49,7 @@ function Create() {
             if (values.age === "") {
                 errors.age = "Please enter Age"
             }
-            if (values.number === "") {
-                errors.number = "Please enter 10 digit number"
-            }
-            if (values.number.length <= 10) {
+            if (values.number < 1111111111) {
                 errors.number = "Please enter 10 digit number"
             }
             if (values.address === "") {
@@ -64,9 +62,8 @@ function Create() {
                 errors.course = "Please enter course "
 
             }
-            if (values.location === "") {
-                errors.location = "Please enter only 1 location "
-
+            if (values.location.length < 1) {
+                errors.location = "Please enter location "
             }
 
             return errors;
@@ -107,7 +104,7 @@ function Create() {
                             <label><b>Gender</b> <span style={{ color: "red" }}>*</span></label>
                             <div class="input-group ">
                                 {/* <label class="input-group-text" for="gender">Options</label> */}
-                                <select  onChange={formik.handleChange} class="form-check digi-gender " id="gender">
+                                <select onChange={formik.handleChange} class="form-check digi-gender " id="gender">
                                     <option disabled selected className='gend'>Select Gender</option>
                                     <option value="male" id="gender" name="gender" onChange={formik.handleChange}>Male</option>
                                     <option value="female" id="gender" name="gender" onChange={formik.handleChange}>Female</option>
@@ -173,7 +170,7 @@ function Create() {
 
                         <div className='col-lg-12' >
 
-                            <label className={`form-check ${formik.errors.course ? `input-error` : ``}`}> <b>Course</b> <span style={{ color: "red" }}>*</span></label> 
+                            <label className={`form-check ${formik.errors.course ? `input-error` : ``}`}> <b>Course</b> <span style={{ color: "red" }}>*</span></label>
                             <input type="radio" value="react" id="course"
                                 onChange={formik.handleChange} name="course" />
                             <label for="react"> React</label>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -200,16 +197,16 @@ function Create() {
                         <input type="checkbox" name="location" onChange={formik.handleChange} value="coimbatore" id="location" />Coimbatore  &nbsp;
                         </div> */}
 
-                        <div className='col-lg-12' > <br/>
+                        <div className='col-lg-12' > <br />
 
-                            <label className={`form-check ${formik.errors.location ? `input-error` : ``}`}> <b>Location</b> <span style={{ color: "red" }}>*</span></label> 
+                            <label className={`form-check ${formik.errors.location ? `input-error` : ``}`}> <b>Location</b> <span style={{ color: "red" }}>*</span></label>
                             <input type="checkbox" value="Chennai" id="location"
                                 onChange={formik.handleChange} name="location" />
                             <label for="Chennai"> Chennai</label>  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
 
                             <input type="checkbox" value="Banglore" id="location"
                                 onChange={formik.handleChange} name="location" />
-                            <label for="Banglore"> Banglore</label>      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                            <label for="Banglore"> Banglore</label>      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
                             <input type="checkbox" value="Hyderabad" id="location"
                                 onChange={formik.handleChange} name="location" />

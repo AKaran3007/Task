@@ -12,15 +12,15 @@ import Edit from './Components/Edit';
 function App() {
   return (
     <div className="App">
-      
+
       <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Create/>}/>
-        <Route path='/view' element={<View/>}/>
-        <Route path='/edit/:id' element={<Edit/>}/>
-      
-        
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Create />} />
+          <Route path='/view' element={<View />} />
+          <Route path='/edit/:id' element={<Edit />} />
+
+
+        </Routes>
       </BrowserRouter>
     </div>
   );
