@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 
 function Create() {
     const [course, setCourse] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setCourse(e.target.value);
@@ -69,7 +70,9 @@ function Create() {
         onSubmit: async (values) => {
             let students = await axios.post("https://62ab049e371180affbdf40f1.mockapi.io/student", values);
             alert("Details Created Sucessfully...");
-            navigate('/view')
+            setLoading(true);
+            navigate('/view');
+            setLoading(false);
 
         }
     })

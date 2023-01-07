@@ -1,9 +1,12 @@
 import logo from './logo.svg';
+import React, { lazy,  Suspense } from 'react';
 import './App.css';
-import Create from './Components/Create';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import View from './Components/View';
-import Edit from './Components/Edit';
+
+const Create = lazy(() => import('../src/Components/Create.jsx'));
+const View = lazy(() => import('../src/Components/View.jsx'));
+const Edit = lazy(() => import('../src/Components/Edit.jsx'));
 
 
 
@@ -14,13 +17,16 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Create />} />
-          <Route path='/view' element={<View />} />
-          <Route path='/edit/:id' element={<Edit />} />
+      <Suspense fallback={<h1>Loading</h1>}>
+      <Routes>
+          <Route path='/' exact element={<Create />} />
+          <Route path='/view' exact element={<View />} />
+          <Route path='/edit/:id' exact element={<Edit />} />
 
 
         </Routes>
+      </Suspense>
+        
       </BrowserRouter>
     </div>
   );
