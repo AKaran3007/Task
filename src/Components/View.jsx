@@ -22,9 +22,11 @@ function View() {
     try {
       let ask = window.confirm("Are You Sure! Do You Want To Delete This Data?");
       if (ask) {
+        setLoading(true);
         await axios.delete(`https://62ab049e371180affbdf40f1.mockapi.io/student/${id}`);
       }
       loadData();
+      setLoading(false);
     } catch (error) {
       console.log(error)
     }
@@ -36,7 +38,7 @@ function View() {
       <h1 className="h3 mb-0 text-gray-800">Details</h1>
       <Link to="/" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Details</Link>
 
-      {loading ? (<h1 className='detail'> Loading Details Be Calm . . .</h1>) : (
+      {loading ? (<div className='loader'> </div>) : (
         <table class="table table-striped">
           <thead>
             <tr>

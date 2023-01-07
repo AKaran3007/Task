@@ -79,7 +79,7 @@ function Create() {
     })
     return (
         <>
-         {loading ? (<h1 className='detail'> Loading Details Be Calm . . .</h1>) : (
+        {loading ? (<div className='loader'> </div>) : (
             <div className='container'>
                 <div className="d-sm-flex align-items-center justify-content-center mb-4">
                     <h1 className="h3 mb-0 text-dark-800">Create Details Form</h1>
