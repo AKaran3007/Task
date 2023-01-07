@@ -7,8 +7,6 @@ import { useState, React } from 'react';
 import TextField from '@mui/material/TextField';
 
 
-
-
 function Create() {
     const [course, setCourse] = useState('');
 
