@@ -55,10 +55,10 @@ function Edit() {
             return errors;
         },
         onSubmit: async (values) => {
-             
-            await axios.put(`https://62ab049e371180affbdf40f1.mockapi.io/student/${params.id}`, values);
-            alert("Details Edited Sucessfully...");
             setLoading(true);
+            await axios.put(`https://62ab049e371180affbdf40f1.mockapi.io/student/${params.id}`, values);
+            
+            alert("Details Edited Sucessfully...");
             navigate('/view')
              setLoading(false);
 
