@@ -92,7 +92,7 @@ function Edit() {
 
     return (
         <>
-            {loading ? (<h1> Loading Details Please Wait . . .</h1>) : (
+            {loading ? (<h1 className='detail'> Loading Details Be Calm . . .</h1>) : (
                 <div className='container'>
 
                     <div className="d-sm-flex align-items-center justify-content-center mb-4">

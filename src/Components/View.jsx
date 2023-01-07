@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import './Style.css'
 
 function View() {
   const [details, setDetails] = useState([]);
@@ -33,7 +34,7 @@ function View() {
 
       <h1 className="h3 mb-0 text-gray-800">Details</h1>
       <Link to="/" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Create Details</Link>
-      {loading ? (<h1> Loading Details Please Wait . . .</h1>) : (
+      {loading ? (<h1 className='detail'> Loading Details Please Be Calm . . .</h1>) : (
         <table class="table table-striped">
           <thead>
             <tr>
